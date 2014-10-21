@@ -1,5 +1,6 @@
 class ApplicationController < ActionController::Base
-  # Prevent CSRF attacks by raising an exception.
-  # For APIs, you may want to use :null_session instead.
-  protect_from_forgery with: :exception
+  def index
+    `curl -s -X POST --data-urlencode 'payload={"text": "Hello! I am Foghorn! I lost my memory!"}' #{ENV['SLACK_WEBHOOK_URL']}`
+    render nothing: true
+  end
 end
