@@ -16,6 +16,7 @@ private
   def response
     response_class = case text
       when /what time/i then :what_time
+      when /justin/i then :justin
       else :base
     end.to_s.prepend('response/').classify.constantize
 
