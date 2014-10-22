@@ -1,6 +1,13 @@
 class ApplicationController < ActionController::Base
   def index
-    `curl -s -X POST --data-urlencode 'payload={"text": "Hello! I am Foghorn! I lost my memory!"}' #{ENV['SLACK_WEBHOOK_URL']}`
+    request = Request.new request_params
+    request.reply if request.valid?
     render nothing: true
+  end
+
+private
+
+  def request_params
+    params.except :controller, :action
   end
 end
