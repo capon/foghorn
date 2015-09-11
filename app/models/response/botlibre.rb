@@ -5,10 +5,33 @@ module Response
   class Botlibre < Base
     def to_s
       request.text.slice! request.trigger_word
-      params = "instance=145&message=#{CGI::escape request.text.lstrip}"
+      params = "instance=145&conversation=7366485073510424580&message=#{CGI::escape request.text.lstrip}"
       url = "http://www.botlibre.com/rest/botlibre/form-chat?#{params}"
       body = open(url).read
-      body[/<message>(.*?)<\/message>/m, 1]
+      emoji = case body[/emote="(.*?)"/m, 1]
+        when 'LOVE' then ':heart_eyes:'
+        when 'LIKE' then ':kissing_heart:'
+        when 'DISLIKE' then 'confused'
+        when 'HATE' then 'triumph'
+        when 'RAGE' then 'confounded'
+        when 'ANGER' then 'imp'
+        when 'CALM' then 'kissing_smiling_eyes'
+        when 'SERENE' then 'relaxed'
+        when 'ECSTATIC' then 'relieved'
+        when 'HAPPY' then 'smiley'
+        when 'SAD' then 'disappointed'
+        when 'CRYING' then 'cry'
+        when 'PANIC' then 'open_mouth'
+        when 'AFRAID' then 'worried'
+        when 'CONFIDENT' then 'sunglasses'
+        when 'COURAGEOUS' then 'grimacing'
+        when 'SURPRISE' then 'scream'
+        when 'BORED' then 'sleeping'
+        when 'LAUGHTER' then 'joy'
+        when 'SERIOUS' then 'neutral_face'
+      end
+      response = body[/<message>(.*?)<\/message>/m, 1]
+      "#{emoji} #{response}"
     end
   end
 end
