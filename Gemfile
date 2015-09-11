@@ -1,8 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'actionpack', '4.2.0.beta2'
-gem 'activemodel', '4.2.0.beta2'
-gem 'activesupport', '4.2.0.beta2'
-gem 'railties', '4.2.0.beta2'
-
-gem 'rails_12factor', group: :production # for Heroku
+gem 'actionpack', '4.2.4'
+gem 'activemodel', '4.2.4'
+gem 'activesupport', '4.2.4'
+gem 'railties', '4.2.4'
