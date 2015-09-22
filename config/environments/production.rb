@@ -20,8 +20,7 @@ Rails.application.configure do
   # NGINX, varnish or squid.
   # config.action_dispatch.rack_cache = true
 
-  # Disable Rails's static asset server (Apache or NGINX will already do this).
-  config.serve_static_assets = false
+  config.log_level = :debug
 
 
   # Specifies the header that your server uses for sending files.
