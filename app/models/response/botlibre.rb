@@ -5,7 +5,7 @@ module Response
   class Botlibre < Base
     def to_s
       request.text.slice! request.trigger_word
-      params = "application=#{ENV['BOTLIBRE_ID']}&instance=165&conversation=4529814163449004505&message=#{CGI::escape request.text.lstrip}"
+      params = "application=#{ENV['BOTLIBRE_ID']}&instance=132686&conversation=4529814163449004505&message=#{CGI::escape request.text.lstrip}"
       url = "http://www.botlibre.com/rest/botlibre/form-chat?#{params}"
       body = open(url).read
       emoji = case body[/emote="(.*?)"/m, 1]
